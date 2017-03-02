@@ -1,0 +1,60 @@
+﻿  stdafx.cpp
+  win32select.c
+  strlcpy.c
+  signal.c
+  select.c
+  poll.c
+  log.c
+  listener.c
+  kqueue.c
+  http.c
+  evutil_time.c
+e:\gamer\server\tcp_server\libevent\src\evutil_time.c(537): warning C4244: “=”: 从“__int64”转换到“long”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\evutil_time.c(542): warning C4244: “=”: 从“time_t”转换到“long”，可能丢失数据
+  evutil_rand.c
+  evutil.c
+  evthread_win32.c
+  evthread.c
+  evrpc.c
+  evport.c
+  evmap.c
+  event_tagging.c
+  event_iocp.c
+  event.c
+  正在生成代码...
+  正在编译...
+  evdns.c
+  epoll.c
+  devpoll.c
+  buffer_iocp.c
+  bufferevent_sock.c
+  bufferevent_ratelim.c
+  bufferevent_pair.c
+  bufferevent_openssl.c
+e:\gamer\server\tcp_server\libevent\src\include\openssl\lhash.h(198): warning C4090: “函数”: 不同的“const”限定符
+e:\gamer\server\tcp_server\libevent\src\bufferevent_openssl.c(552): warning C4244: “=”: 从“uint64_t”转换到“unsigned long”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\bufferevent_openssl.c(554): warning C4244: “=”: 从“uint64_t”转换到“unsigned long”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\bufferevent_openssl.c(560): warning C4244: “初始化”: 从“uint64_t”转换到“unsigned long”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\bufferevent_openssl.c(561): warning C4244: “初始化”: 从“uint64_t”转换到“unsigned long”，可能丢失数据
+  bufferevent_filter.c
+  bufferevent_async.c
+  bufferevent.c
+  buffer.c
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3096): warning C4244: “函数”: 从“const __int64”转换到“std::size_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3108): warning C4244: “函数”: 从“__int64”转换到“unsigned int”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3227): warning C4244: “=”: 从“__int64”转换到“ev_misalign_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3228): warning C4244: “=”: 从“__int64”转换到“std::size_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3229): warning C4244: “=”: 从“__int64”转换到“std::size_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3247): warning C4244: “函数”: 从“unsigned __int64”转换到“SIZE_T”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3253): warning C4244: “=”: 从“unsigned __int64”转换到“std::size_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3254): warning C4244: “=”: 从“unsigned __int64”转换到“ev_misalign_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3255): warning C4244: “=”: 从“__int64”转换到“std::size_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3263): warning C4244: “=”: 从“__int64”转换到“std::size_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3264): warning C4244: “=”: 从“__int64”转换到“std::size_t”，可能丢失数据
+e:\gamer\server\tcp_server\libevent\src\buffer.c(3268): warning C4244: “+=”: 从“__int64”转换到“std::size_t”，可能丢失数据
+  正在生成代码...
+libcrypto.lib(libcrypto-1_1.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR 已在 libssl.lib(libssl-1_1.dll) 中定义；已忽略第二个定义
+libcrypto.lib(libcrypto-1_1.dll) : warning LNK4221: 此对象文件未定义任何之前未定义的公共符号，因此任何耗用此库的链接操作都不会使用此文件
+ws2_32.lib(WS2_32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR 已在 libssl.lib(libssl-1_1.dll) 中定义；已忽略第二个定义
+ws2_32.lib(WS2_32.dll) : warning LNK4221: 此对象文件未定义任何之前未定义的公共符号，因此任何耗用此库的链接操作都不会使用此文件
+  libevent.vcxproj -> E:\gamer\server\tcp_server\Debug\libevent.lib
