@@ -25,6 +25,9 @@
     <Filter Include="头文件\include\libevent\openssl">
       <UniqueIdentifier>{ed613eb7-6409-4285-87e2-624940694360}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\manager">
+      <UniqueIdentifier>{ec730652-22dc-4005-ae44-a9e9ddde0bb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -351,6 +354,9 @@
     <ClInclude Include="..\libevent\src\include\openssl\__DECC_INCLUDE_PROLOGUE.H">
       <Filter>头文件\include\libevent\openssl</Filter>
     </ClInclude>
+    <ClInclude Include="src\network_manager.h">
+      <Filter>源文件\manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -358,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\network_manager.cc">
+      <Filter>源文件\manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
