@@ -36,7 +36,7 @@ void NetworkManager::InitSocket() {
 	struct evconnlistener* connlistener;
 	struct sockaddr_in sin;
 	const char* ip = "127.0.0.1";
-	int port = 9876;
+	int port = 9494;
 
 #ifdef _WIN32
 	WSADATA wsa_data;

@@ -58,6 +58,9 @@
       <AdditionalDependencies>libssl.lib;libcrypto.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)libevent\lib\openssl;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
+    <PostBuildEvent>
+      <Command>xcopy "$(OutDir)*.lib" "$(SolutionDir)tcp_server\lib\$(Configuration)" /D /E /I /F /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

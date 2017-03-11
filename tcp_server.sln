@@ -1,27 +1,46 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tcp_server", "tcp_server\tcp_server.vcxproj", "{DA00965D-35C3-47AB-82AD-422149CADE42}"
 	ProjectSection(ProjectDependencies) = postProject
+		{31F96B26-CC04-422E-9117-24D68FA2D746} = {31F96B26-CC04-422E-9117-24D68FA2D746}
 		{5EB677EC-5652-4557-B7DE-BE84F1B35F75} = {5EB677EC-5652-4557-B7DE-BE84F1B35F75}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libevent", "libevent\libevent.vcxproj", "{5EB677EC-5652-4557-B7DE-BE84F1B35F75}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpp_redis", "cpp_redis\cpp_redis.vcxproj", "{31F96B26-CC04-422E-9117-24D68FA2D746}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DA00965D-35C3-47AB-82AD-422149CADE42}.Debug|Win32.ActiveCfg = Debug|Win32
 		{DA00965D-35C3-47AB-82AD-422149CADE42}.Debug|Win32.Build.0 = Debug|Win32
+		{DA00965D-35C3-47AB-82AD-422149CADE42}.Debug|x64.ActiveCfg = Debug|Win32
 		{DA00965D-35C3-47AB-82AD-422149CADE42}.Release|Win32.ActiveCfg = Release|Win32
 		{DA00965D-35C3-47AB-82AD-422149CADE42}.Release|Win32.Build.0 = Release|Win32
+		{DA00965D-35C3-47AB-82AD-422149CADE42}.Release|x64.ActiveCfg = Release|Win32
 		{5EB677EC-5652-4557-B7DE-BE84F1B35F75}.Debug|Win32.ActiveCfg = Debug|Win32
 		{5EB677EC-5652-4557-B7DE-BE84F1B35F75}.Debug|Win32.Build.0 = Debug|Win32
+		{5EB677EC-5652-4557-B7DE-BE84F1B35F75}.Debug|x64.ActiveCfg = Debug|Win32
 		{5EB677EC-5652-4557-B7DE-BE84F1B35F75}.Release|Win32.ActiveCfg = Release|Win32
 		{5EB677EC-5652-4557-B7DE-BE84F1B35F75}.Release|Win32.Build.0 = Release|Win32
+		{5EB677EC-5652-4557-B7DE-BE84F1B35F75}.Release|x64.ActiveCfg = Release|Win32
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Debug|Win32.ActiveCfg = Debug|Win32
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Debug|Win32.Build.0 = Debug|Win32
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Debug|x64.ActiveCfg = Debug|x64
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Debug|x64.Build.0 = Debug|x64
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Release|Win32.ActiveCfg = Release|Win32
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Release|Win32.Build.0 = Release|Win32
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Release|x64.ActiveCfg = Release|x64
+		{31F96B26-CC04-422E-9117-24D68FA2D746}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

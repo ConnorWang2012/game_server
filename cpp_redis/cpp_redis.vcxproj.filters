@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\redis">
+      <UniqueIdentifier>{f0cdb554-eac9-4eb5-b77e-8a44a9cc8cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\tacopie">
+      <UniqueIdentifier>{d3c5e217-2a0f-4334-b08e-31a9cb13c2ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\include">
+      <UniqueIdentifier>{483a77cf-f194-4df3-9649-2b61e522b3e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\include\redis">
+      <UniqueIdentifier>{abb84d19-7464-4704-a24a-70c6c7c62c51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\include\tacopie">
+      <UniqueIdentifier>{4d668083-7ef8-40d4-bf5d-be1f6d95af2f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\tacopie\utils\thread_pool.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tacopie\error.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tacopie\logger.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tacopie\network\tcp_client.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tacopie\network\tcp_server.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tacopie\network\windows\io_service.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tacopie\network\windows\self_pipe.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tacopie\network\windows\tcp_socket.cpp">
+      <Filter>源文件\tacopie</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\builders\array_builder.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\builders\builders_factory.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\builders\bulk_string_builder.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\builders\error_builder.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\builders\integer_builder.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\builders\reply_builder.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\builders\simple_string_builder.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\logger.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\network\redis_connection.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\redis_client.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\redis_subscriber.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp_redis\reply.cpp">
+      <Filter>源文件\redis</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\include\tacopie\error.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\logger.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\network\io_service.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\network\self_pipe.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\network\tcp_client.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\network\tcp_server.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\network\tcp_socket.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\typedefs.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\tacopie\utils\thread_pool.hpp">
+      <Filter>头文件\include\tacopie</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\array_builder.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\builders_factory.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\builder_iface.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\bulk_string_builder.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\error_builder.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\integer_builder.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\reply_builder.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\builders\simple_string_builder.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\future_client.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\logger.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\network\redis_connection.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\redis_client.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\redis_error.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\redis_subscriber.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\reply.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\cpp_redis\sync_client.hpp">
+      <Filter>头文件\include\redis</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

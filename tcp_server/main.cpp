@@ -1,4 +1,4 @@
-#include "src/network_manager.h"
+#include "network_manager.h"
 
 int main(int argc, char* argv[]) {
 	gamer::NetworkManager::GetInstance()->InitSocket();

@@ -14,12 +14,13 @@
     <ProjectGuid>{DA00965D-35C3-47AB-82AD-422149CADE42}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>tcp_server</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -52,7 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)libevent\src;$(SolutionDir)libevent\src\compat;$(SolutionDir)libevent\src\include;$(SolutionDir)libevent\src\include\event2;$(SolutionDir)libevent\src\include\openssl;$(SolutionDir)libevent\src\WIN32-Code;$(SolutionDir)libevent\src\WIN32-Code\nmake;$(SolutionDir)libevent\src\WIN32-Code\nmake\event2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libevent\src;$(SolutionDir)libevent\src\compat;$(SolutionDir)libevent\src\include;$(SolutionDir)libevent\src\include\event2;$(SolutionDir)libevent\src\include\openssl;$(SolutionDir)libevent\src\WIN32-Code;$(SolutionDir)libevent\src\WIN32-Code\nmake;$(SolutionDir)libevent\src\WIN32-Code\nmake\event2;$(SolutionDir)tcp_server\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -61,7 +62,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)tcp_server\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy "$(OutDir)*.lib" "$(SolutionDir)tcp_server\lib" /D /E /I /F /Y</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
