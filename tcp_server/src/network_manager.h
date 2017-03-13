@@ -2,6 +2,8 @@
 #ifndef CITY_HUNTER_SRC_NETWORK_MANAGER_H_
 #define CITY_HUNTER_SRC_NETWORK_MANAGER_H_
 
+#include <string>
+
 #include "event2/buffer.h"
 #include "event2/bufferevent.h"
 #include "event2/event.h"
@@ -30,7 +32,7 @@ class NetworkManager {
 							 int socklen, 
 							 void* ctx);
 
-	static void OnConnErrorOccur(struct evconnlistener* listerner, void* ctx);
+	static void OnConnErrorOccur(struct evconnlistener* listener, void* ctx);
 
 	static void OnBuffereventArrive(struct bufferevent* bev, short event, void* ctx);
 
@@ -38,7 +40,14 @@ class NetworkManager {
 
 	static void OnBuffereventWrite(struct bufferevent* bev, void* ctx);
 
-	static NetworkManager* s_shared_network_manager_;
+	void InitIPAndPort();
+
+	static NetworkManager* s_network_mgr_;
+
+	struct evconnlistener* connlistener_;
+
+	std::string ip_;
+	int port_;
 };
 
 } // namespace gamer

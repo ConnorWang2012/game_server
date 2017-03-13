@@ -6,9 +6,11 @@
 
 namespace gamer {
 
-NetworkManager* NetworkManager::s_shared_network_manager_ = nullptr;
+NetworkManager* NetworkManager::s_network_mgr_ = nullptr;
 
-NetworkManager::NetworkManager() {
+NetworkManager::NetworkManager() 
+	:ip_("127.0.0.1")
+	,port_(4994){
 
 }
 
@@ -17,26 +19,23 @@ NetworkManager::~NetworkManager() {
 }
 
 NetworkManager* NetworkManager::GetInstance() {
-	if (!s_shared_network_manager_) {
-		s_shared_network_manager_ = new NetworkManager();
-		if( !s_shared_network_manager_->Init() ) {
-			//SAFE_DELETE(s_shared_network_manager_);
+	if (!s_network_mgr_) {
+		s_network_mgr_ = new NetworkManager();
+		if( !s_network_mgr_->Init() ) {
+			//SAFE_DELETE(s_network_mgr_);
 			//CCLOG("event_manager init failed!");
 	    }
 	}
-	return s_shared_network_manager_;
+	return s_network_mgr_;
 }
 
 void NetworkManager::DestoryInstance() {
-	//SAFE_DELETE(s_shared_network_manager_);
+	//SAFE_DELETE(s_network_mgr_);
 }
 
 void NetworkManager::InitSocket() {
 	struct event_base* base;
-	struct evconnlistener* connlistener;
 	struct sockaddr_in sin;
-	const char* ip = "127.0.0.1";
-	int port = 9494;
 
 #ifdef _WIN32
 	WSADATA wsa_data;
@@ -50,23 +49,23 @@ void NetworkManager::InitSocket() {
 
 	memset(&sin, 0, sizeof(sin));
 	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = inet_addr(ip);
+	sin.sin_addr.s_addr = inet_addr(ip_.c_str());
 	//sin.sin_addr.s_addr = htonl(0);
-	sin.sin_port = htons(port);
+	sin.sin_port = htons(port_);
 
-	connlistener = evconnlistener_new_bind(base, 
+	connlistener_ = evconnlistener_new_bind(base, 
 		                                   (evconnlistener_cb)OnConnAccept, 
 										   NULL,
 		                                   LEV_OPT_CLOSE_ON_FREE | LEV_OPT_REUSEABLE, 
 										   -1, 
 										   (struct sockaddr*)&sin, 
 										   sizeof(sin));
-	if (!connlistener) {
+	if (!connlistener_) {
 		perror("evconnlistener_new_bind failed!");
 	}
-	printf("tcp listen on : %s, port : %d\n", ip, port);
+	printf("tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
 
-	evconnlistener_set_error_cb(connlistener, OnConnErrorOccur);
+	evconnlistener_set_error_cb(connlistener_, OnConnErrorOccur);
 
 	event_base_dispatch(base);
 }
@@ -85,8 +84,8 @@ void NetworkManager::OnConnAccept(struct evconnlistener* listener,
 	bufferevent_enable(bev, EV_READ | EV_WRITE);
 }
 
-void NetworkManager::OnConnErrorOccur(struct evconnlistener* listerner, void* ctx) {
-	struct event_base* base = evconnlistener_get_base(listerner);
+void NetworkManager::OnConnErrorOccur(struct evconnlistener* listener, void* ctx) {
+	struct event_base* base = evconnlistener_get_base(listener);
 	int err = EVUTIL_SOCKET_ERROR();
 	//fprintf(stderr, "Got an error %d (%s) on the listener. "
 	//	"Shutting down.\n", err, evutil_socket_error_to_string(err));
@@ -136,6 +135,12 @@ void NetworkManager::OnBuffereventWrite(struct bufferevent* bev, void* ctx) {
 	//printf("client read_cb");
 	//char msg[] = "client msg";
 	//bufferevent_write(bev, msg, sizeof(msg));
+}
+
+void NetworkManager::InitIPAndPort() {
+	// TODO : init from cfg
+	ip_ = "127.0.0.1";
+	port_ = 4994;
 }
 
 bool NetworkManager::Init() {
