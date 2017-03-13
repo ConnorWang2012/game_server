@@ -95,7 +95,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>libssl.lib;libcrypto.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)libevent\lib\openssl;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)libevent\lib\openssl\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
       <Command>xcopy "$(OutDir)$(ProjectName).lib" "$(SolutionDir)tcp_server\lib\$(Configuration)\$(Platform)" /D /E /I /F /Y</Command>
@@ -116,8 +116,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>libssl.lib;libcrypto.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)libevent\lib\openssl;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcrypto.lib;libssl.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libevent\lib\openssl\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
       <Command>xcopy "$(OutDir)$(ProjectName).lib" "$(SolutionDir)tcp_server\lib\$(Configuration)\$(Platform)" /D /E /I /F /Y</Command>
