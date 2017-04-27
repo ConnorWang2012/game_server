@@ -1,6 +1,6 @@
-#include "network_manager.h"
+#include "framework/service/runtime/server.h"
 
 int main(int argc, char* argv[]) {
-	gamer::NetworkManager::GetInstance()->InitSocket();
+	gamer::Server::GetInstance()->Start();
 	return 0;
 }

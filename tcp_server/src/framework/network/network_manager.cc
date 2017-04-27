@@ -1,4 +1,23 @@
+/*******************************************************************************
+@ copyright(C), 2015-2020, ConnorAndHisFriendsCompany.Inc
+@ filename:	   network_manager.cc
+@ author:	   Connor
+@ version:	   1.0.0
+@ date:		   2017-04-01
+@ description: network manager.
+@ others:
+@ history:
+1.date:
+author:
+modification:
+********************************************************************************/
+
 #include "network_manager.h"
+
+#include "event2/buffer.h"
+#include "event2/bufferevent.h"
+#include "event2/event.h"
+#include "event2/listener.h"
 
 #ifdef _WIN32
 #include <WinSock2.h>
@@ -6,45 +25,25 @@
 
 namespace gamer {
 
-NetworkManager* NetworkManager::s_network_mgr_ = nullptr;
-
-NetworkManager::NetworkManager() 
-	:ip_("127.0.0.1")
-	,port_(4994){
-
-}
-
-NetworkManager::~NetworkManager() {
-
-}
-
 NetworkManager* NetworkManager::GetInstance() {
-	if (!s_network_mgr_) {
-		s_network_mgr_ = new NetworkManager();
-		if( !s_network_mgr_->Init() ) {
-			//SAFE_DELETE(s_network_mgr_);
-			//CCLOG("event_manager init failed!");
-	    }
-	}
-	return s_network_mgr_;
-}
-
-void NetworkManager::DestoryInstance() {
-	//SAFE_DELETE(s_network_mgr_);
+	static NetworkManager s_network_mgr;
+	return &s_network_mgr;
 }
 
 void NetworkManager::InitSocket() {
-	struct event_base* base;
 	struct sockaddr_in sin;
 
 #ifdef _WIN32
-	WSADATA wsa_data;
-	WSAStartup(0x0201, &wsa_data);
+	WSADATA wsadata;
+	WSAStartup(0x0201, &wsadata);
 #endif
 
-	base = event_base_new();
-	if (!base) {
-		perror("event_base_new failed!");
+	if (nullptr == evbase_) {
+		evbase_ = event_base_new();
+	}
+	if (nullptr == evbase_) {
+		perror("[NetworkManager::InitSocket] event_base_new failed!");
+		return;
 	}
 
 	memset(&sin, 0, sizeof(sin));
@@ -53,21 +52,24 @@ void NetworkManager::InitSocket() {
 	//sin.sin_addr.s_addr = htonl(0);
 	sin.sin_port = htons(port_);
 
-	connlistener_ = evconnlistener_new_bind(base, 
-		                                   (evconnlistener_cb)OnConnAccept, 
-										   NULL,
-		                                   LEV_OPT_CLOSE_ON_FREE | LEV_OPT_REUSEABLE, 
-										   -1, 
-										   (struct sockaddr*)&sin, 
-										   sizeof(sin));
-	if (!connlistener_) {
-		perror("evconnlistener_new_bind failed!");
+	if (nullptr == connlistener_) {
+		connlistener_ = evconnlistener_new_bind(evbase_,
+			(evconnlistener_cb)OnConnAccept,
+			NULL,
+			LEV_OPT_CLOSE_ON_FREE | LEV_OPT_REUSEABLE,
+			-1,
+			(struct sockaddr*)&sin,
+			sizeof(sin));
 	}
-	printf("tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
+	if (nullptr == connlistener_) {
+		perror("[NetworkManager::InitSocket] evconnlistener_new_bind failed!");
+		return;
+	}
+	printf("[NetworkManager::InitSocket] tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
 
 	evconnlistener_set_error_cb(connlistener_, OnConnErrorOccur);
 
-	event_base_dispatch(base);
+	event_base_dispatch(evbase_);
 }
 
 void NetworkManager::OnConnAccept(struct evconnlistener* listener, 
@@ -76,16 +78,16 @@ void NetworkManager::OnConnAccept(struct evconnlistener* listener,
 								  int socklen,
                                   void* ctx) {
 	// We got a new connection! Set up a bufferevent for it.
-	printf("one client connected\n");
-	struct event_base* base = evconnlistener_get_base(listener);
+	printf("[NetworkManager::InitSocket] one client connected\n");
+	auto base = evconnlistener_get_base(listener);
 	//int ret = evutil_make_socket_nonblocking(fd);
-	struct bufferevent* bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
+	auto bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
 	bufferevent_setcb(bev, OnBuffereventRead, OnBuffereventWrite, OnBuffereventArrive, NULL);
 	bufferevent_enable(bev, EV_READ | EV_WRITE);
 }
 
 void NetworkManager::OnConnErrorOccur(struct evconnlistener* listener, void* ctx) {
-	struct event_base* base = evconnlistener_get_base(listener);
+	auto base = evconnlistener_get_base(listener);
 	int err = EVUTIL_SOCKET_ERROR();
 	//fprintf(stderr, "Got an error %d (%s) on the listener. "
 	//	"Shutting down.\n", err, evutil_socket_error_to_string(err));
@@ -116,8 +118,8 @@ void NetworkManager::OnBuffereventArrive(struct bufferevent* bev, short event, v
 
 void NetworkManager::OnBuffereventRead(struct bufferevent* bev, void* ctx) {
 	// This callback is invoked when there is data to read on bev.
-	struct evbuffer* input = bufferevent_get_input(bev);
-	struct evbuffer* output = bufferevent_get_output(bev);
+	auto input = bufferevent_get_input(bev);
+	auto output = bufferevent_get_output(bev);
 
 	//if (my_n < 5) {
 	//	my_n++;

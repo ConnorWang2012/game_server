@@ -1,2 +1,15 @@
-﻿  tcp_server.vcxproj -> E:\proj\tcp_server\Debug\Win32\tcp_server.exe
-  tcp_server.vcxproj -> E:\proj\tcp_server\Debug\Win32\tcp_server.pdb (Partial PDB)
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中间目录(Debug\)包含从另一个项目(game_server.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  server.cc
+  network_manager.cc
+  listener.cc
+  event_manager.cc
+  event_listener.cc
+  event.cc
+  command_manager.cc
+  command_listener.cc
+  command.cc
+  main.cpp
+  正在生成代码...
+LINK : warning LNK4098: 默认库“LIBCMTD”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  tcp_server.vcxproj -> E:\proj\game_server\Debug\Win32\tcp_server.exe
+  tcp_server.vcxproj -> E:\proj\game_server\Debug\Win32\tcp_server.pdb (Partial PDB)

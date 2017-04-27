@@ -8,449 +8,563 @@
     <Filter Include="src\framework">
       <UniqueIdentifier>{9c1bcfda-8eb3-46bc-b420-59753449f29f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include">
-      <UniqueIdentifier>{f17186ea-b262-40cc-b78b-c97da8e6fcef}</UniqueIdentifier>
+    <Filter Include="src\framework\network">
+      <UniqueIdentifier>{1ac0b3ec-d66c-4f52-9fac-8162567fe5a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\libevent">
+    <Filter Include="src\framework\event">
+      <UniqueIdentifier>{9cdd20a8-be59-4db3-ad9e-24e4cf711a63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\util">
+      <UniqueIdentifier>{f5bf31db-6859-4600-9cef-501ac580bce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer">
+      <UniqueIdentifier>{6eef4b38-aa85-4b1d-b71a-81f351e96691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\cache">
+      <UniqueIdentifier>{4868ff32-7e98-4b0d-9ad2-fc08a9b6558b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\network\libevent">
       <UniqueIdentifier>{8728f027-307f-4cbf-9e51-863526893c1b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\libevent\event">
+    <Filter Include="src\framework\network\libevent\event">
       <UniqueIdentifier>{2938a23a-18f8-4a83-ae18-3425fc732cd8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\libevent\openssl">
+    <Filter Include="src\framework\network\libevent\openssl">
       <UniqueIdentifier>{ed613eb7-6409-4285-87e2-624940694360}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\redis">
+    <Filter Include="src\framework\cache\redis">
       <UniqueIdentifier>{63a39444-a28c-4ee7-a1a8-08c9b386c725}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\redis\cpp_redis">
+    <Filter Include="src\framework\cache\redis\cpp_redis">
       <UniqueIdentifier>{55cf0471-af34-45b0-9dfd-1a8e5d1ab007}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\redis\cpp_redis\builders">
+    <Filter Include="src\framework\cache\redis\cpp_redis\builders">
       <UniqueIdentifier>{ab852fb9-a0be-4a5e-84d7-e17774a2f5ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\redis\cpp_redis\network">
+    <Filter Include="src\framework\cache\redis\cpp_redis\network">
       <UniqueIdentifier>{94c3dc50-01b6-40fc-9f29-7ee041a810f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\redis\tacopie">
+    <Filter Include="src\framework\cache\redis\tacopie">
       <UniqueIdentifier>{9e3a62e6-0a99-41a9-9754-89ce0fa55469}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\redis\tacopie\network">
+    <Filter Include="src\framework\cache\redis\tacopie\network">
       <UniqueIdentifier>{cc373281-44b1-402d-af39-9588865f7379}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\include\redis\tacopie\utils">
+    <Filter Include="src\framework\cache\redis\tacopie\utils">
       <UniqueIdentifier>{39a9fd60-84da-48a3-ac98-0432f71e34f6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\framework\manager">
-      <UniqueIdentifier>{ec730652-22dc-4005-ae44-a9e9ddde0bb4}</UniqueIdentifier>
+    <Filter Include="src\customer\module">
+      <UniqueIdentifier>{0e111177-0bd4-48b4-a35d-4e30a5102577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\util">
+      <UniqueIdentifier>{0391bd81-160d-495d-a210-92138494112f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\item">
+      <UniqueIdentifier>{cf937418-8458-457d-a054-2145347881fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\friend">
+      <UniqueIdentifier>{ff24a7ad-79d1-407d-9519-55873379dd0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\login">
+      <UniqueIdentifier>{0ad7a796-0ed0-4388-ac3d-e672a4a3e61c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\chat">
+      <UniqueIdentifier>{9c5affe4-014b-48ee-af03-c9820a06869e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\task">
+      <UniqueIdentifier>{a7249b00-8462-4bf4-a16c-09f35224b4ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\skill">
+      <UniqueIdentifier>{4d9066ce-493e-4c2e-af81-fa294c1c4769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\room">
+      <UniqueIdentifier>{ae214ba5-38f8-432f-83b1-c6b66db3d289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\customer\module\user">
+      <UniqueIdentifier>{80bf5384-7347-4b72-8617-90ed7bf8f2ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\log">
+      <UniqueIdentifier>{1987f18e-f7bf-4940-8d90-6ecf0fbcc6a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\service">
+      <UniqueIdentifier>{62bf1ffc-5134-4953-980e-2e6b6a262b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\service\runtime">
+      <UniqueIdentifier>{a8586644-ab09-4cff-8384-0429e9ebef5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\service\data">
+      <UniqueIdentifier>{d7d0d57d-91f9-4c1f-ac27-59616662b765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\framework\base">
+      <UniqueIdentifier>{27baabd9-8375-4f5a-b4ce-09137a4f3589}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libevent\src\include\evrpc.h">
-      <Filter>src\framework\include\libevent</Filter>
+      <Filter>src\framework\network\libevent</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\evutil.h">
-      <Filter>src\framework\include\libevent</Filter>
+      <Filter>src\framework\network\libevent</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\evdns.h">
-      <Filter>src\framework\include\libevent</Filter>
+      <Filter>src\framework\network\libevent</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event.h">
-      <Filter>src\framework\include\libevent</Filter>
+      <Filter>src\framework\network\libevent</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\evhttp.h">
-      <Filter>src\framework\include\libevent</Filter>
+      <Filter>src\framework\network\libevent</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\buffer.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\bufferevent.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\bufferevent_compat.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\bufferevent_ssl.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\bufferevent_struct.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\buffer_compat.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\dns.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\dns_compat.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\dns_struct.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\event.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\event_compat.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\event_struct.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\http.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\http_compat.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\http_struct.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\keyvalq_struct.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\listener.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\rpc.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\rpc_compat.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\rpc_struct.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\tag.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\tag_compat.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\thread.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\util.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\event2\visibility.h">
-      <Filter>src\framework\include\libevent\event</Filter>
+      <Filter>src\framework\network\libevent\event</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\aes.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\asn1.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\asn1t.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\asn1_mac.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\async.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\bio.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\blowfish.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\bn.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\buffer.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\camellia.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\cast.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\cmac.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\cms.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\comp.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\conf.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\conf_api.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\crypto.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ct.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\des.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\dh.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\dsa.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\dtls1.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ebcdic.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ec.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ecdh.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ecdsa.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\engine.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\err.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\evp.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\e_os2.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\hmac.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\idea.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\kdf.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\lhash.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\md2.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\md4.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\md5.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\mdc2.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\modes.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\objects.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\obj_mac.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ocsp.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\opensslconf.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\opensslv.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ossl_typ.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\pem.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\pem2.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\pkcs12.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\pkcs7.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\rand.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\rc2.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\rc4.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\rc5.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ripemd.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\rsa.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\safestack.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\seed.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\sha.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\srp.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\srtp.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ssl.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ssl2.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ssl3.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\stack.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\symhacks.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\tls1.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ts.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\txt_db.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\ui.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\whrlpool.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\x509.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\x509v3.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\x509_vfy.h">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\__DECC_INCLUDE_EPILOGUE.H">
-      <Filter>src\framework\include\libevent\openssl</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\libevent\src\include\openssl\__DECC_INCLUDE_PROLOGUE.H">
-      <Filter>src\framework\include\libevent\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="src\network_manager.h">
-      <Filter>src\framework\manager</Filter>
+      <Filter>src\framework\network\libevent\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\array_builder.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\builders_factory.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\builder_iface.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\bulk_string_builder.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\error_builder.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\integer_builder.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\reply_builder.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\builders\simple_string_builder.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\builders</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\builders</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\network\redis_connection.hpp">
-      <Filter>src\framework\include\redis\cpp_redis\network</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis\network</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\future_client.hpp">
-      <Filter>src\framework\include\redis\cpp_redis</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\logger.hpp">
-      <Filter>src\framework\include\redis\cpp_redis</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\redis_client.hpp">
-      <Filter>src\framework\include\redis\cpp_redis</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\redis_error.hpp">
-      <Filter>src\framework\include\redis\cpp_redis</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\redis_subscriber.hpp">
-      <Filter>src\framework\include\redis\cpp_redis</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\reply.hpp">
-      <Filter>src\framework\include\redis\cpp_redis</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\cpp_redis\sync_client.hpp">
-      <Filter>src\framework\include\redis\cpp_redis</Filter>
+      <Filter>src\framework\cache\redis\cpp_redis</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\error.hpp">
-      <Filter>src\framework\include\redis\tacopie</Filter>
+      <Filter>src\framework\cache\redis\tacopie</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\logger.hpp">
-      <Filter>src\framework\include\redis\tacopie</Filter>
+      <Filter>src\framework\cache\redis\tacopie</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\typedefs.hpp">
-      <Filter>src\framework\include\redis\tacopie</Filter>
+      <Filter>src\framework\cache\redis\tacopie</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\utils\thread_pool.hpp">
-      <Filter>src\framework\include\redis\tacopie\utils</Filter>
+      <Filter>src\framework\cache\redis\tacopie\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\network\io_service.hpp">
-      <Filter>src\framework\include\redis\tacopie\network</Filter>
+      <Filter>src\framework\cache\redis\tacopie\network</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\network\self_pipe.hpp">
-      <Filter>src\framework\include\redis\tacopie\network</Filter>
+      <Filter>src\framework\cache\redis\tacopie\network</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\network\tcp_client.hpp">
-      <Filter>src\framework\include\redis\tacopie\network</Filter>
+      <Filter>src\framework\cache\redis\tacopie\network</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\network\tcp_server.hpp">
-      <Filter>src\framework\include\redis\tacopie\network</Filter>
+      <Filter>src\framework\cache\redis\tacopie\network</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp_redis\src\include\tacopie\network\tcp_socket.hpp">
-      <Filter>src\framework\include\redis\tacopie\network</Filter>
+      <Filter>src\framework\cache\redis\tacopie\network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\network\network_manager.h">
+      <Filter>src\framework\network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\listener.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\command.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\command_listener.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\command_manager.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\event.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\event_define.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\event_listener.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\event\event_manager.h">
+      <Filter>src\framework\event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\service\runtime\server.h">
+      <Filter>src\framework\service\runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\service\runtime\server_protocal.h">
+      <Filter>src\framework\service\runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\base\common.h">
+      <Filter>src\framework\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\framework\base\macros.h">
+      <Filter>src\framework\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\network_manager.cc">
-      <Filter>src\framework\manager</Filter>
+    <ClCompile Include="src\framework\network\network_manager.cc">
+      <Filter>src\framework\network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\event\command.cc">
+      <Filter>src\framework\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\event\command_listener.cc">
+      <Filter>src\framework\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\event\command_manager.cc">
+      <Filter>src\framework\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\event\event.cc">
+      <Filter>src\framework\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\event\event_listener.cc">
+      <Filter>src\framework\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\event\event_manager.cc">
+      <Filter>src\framework\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\event\listener.cc">
+      <Filter>src\framework\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\service\runtime\server.cc">
+      <Filter>src\framework\service\runtime</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\cpp_redis\src\include\tacopie\tacopie">
-      <Filter>src\framework\include\redis\tacopie</Filter>
+      <Filter>src\framework\cache\redis\tacopie</Filter>
     </None>
   </ItemGroup>
 </Project>
