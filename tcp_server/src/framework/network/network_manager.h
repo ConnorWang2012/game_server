@@ -42,8 +42,6 @@ class NetworkManager {
 
 	NetworkManager(const std::string& ip, int port);
 
-	bool Init();
-
 	static void OnConnAccept(struct evconnlistener* listener, 
 		                     evutil_socket_t fd,
 	                         struct socketaddr* addr, 

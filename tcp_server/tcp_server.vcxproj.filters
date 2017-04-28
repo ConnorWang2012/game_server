@@ -532,6 +532,9 @@
     <ClInclude Include="src\framework\log\log.h">
       <Filter>src\framework\log</Filter>
     </ClInclude>
+    <ClInclude Include="src\framework\base\log_headers.h">
+      <Filter>src\framework\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

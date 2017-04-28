@@ -45,7 +45,7 @@ class EventListener : public Listener {
 
     void ExecuteCallback(Event* event);
 
-    bool check_validity [[override]] () const;
+    bool check_validity() const override;
 
 	inline int event_id() const { return target_id(); };
 

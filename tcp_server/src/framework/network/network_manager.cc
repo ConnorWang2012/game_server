@@ -23,8 +23,7 @@ modification:
 #include "event2/event.h"
 #include "event2/listener.h"
 
-#include "framework/log/log.h"
-#include "framework/base/macros.h"
+#include "framework/base/log_headers.h"
 
 namespace gamer {
 
@@ -78,7 +77,7 @@ void NetworkManager::InitSocket() {
 		LOGERROR("[NetworkManager::InitSocket] evconnlistener_new_bind failed!");
 		return;
 	}
-	//log::printgreen("[NetworkManager::InitSocket] tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
+
 	LOGGREEN("[NetworkManager::InitSocket] tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
 
 	evconnlistener_set_error_cb(connlistener_, OnConnErrorOccur);
@@ -157,10 +156,6 @@ void NetworkManager::InitIPAndPort() {
 	// TODO : init from cfg
 	ip_ = "127.0.0.1";
 	port_ = 4994;
-}
-
-bool NetworkManager::Init() {
-	return true;
 }
 
 } // namespace gamer
