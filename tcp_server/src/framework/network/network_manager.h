@@ -27,9 +27,13 @@ namespace gamer {
 
 class NetworkManager {
   public:
+	NetworkManager& operator=(const NetworkManager&) = delete;
+
+	NetworkManager(const NetworkManager&) = delete;
+
 	~NetworkManager() {};
 
-	static NetworkManager* GetInstance();
+	static NetworkManager* instance();
 
 	void InitSocket();
 

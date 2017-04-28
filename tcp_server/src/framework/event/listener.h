@@ -29,7 +29,7 @@ class Listener {
 
     //virtual void execute_callback() = 0;
 
-    virtual bool checkValidity() const = 0 ;
+    virtual bool check_validity() const = 0 ;
 
     inline void set_listener_name(const std::string& listener_name) { 
         listener_name_ = listener_name; 

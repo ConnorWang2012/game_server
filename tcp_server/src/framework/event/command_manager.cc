@@ -29,93 +29,93 @@ namespace gamer {
 
 CommandManager::CommandManager()
     :event_manager_(nullptr)
-    ,cmd_listeners_vec_(nullptr) {
+    ,cmd_listeners_(nullptr) {
 }
 
 CommandManager::~CommandManager() {
     SAFE_DELETE(event_manager_); 
-    removeAllCmdListenersImpl(true);
-    SAFE_DELETE(cmd_listeners_vec_); 
+    RemoveAllCmdListenersImpl(true);
+    SAFE_DELETE(cmd_listeners_); 
 }
 
-CommandManager* CommandManager::getInstance() {
-    static CommandManager* cmd_manager = nullptr;
-    if (nullptr == cmd_manager) {
-        cmd_manager = new CommandManager();
-        if ( !cmd_manager->init() ) {
-            SAFE_DELETE(cmd_manager); 
+CommandManager* CommandManager::instance() {
+    static CommandManager* s_cmd_manager = nullptr;
+    if (nullptr == s_cmd_manager) {
+        s_cmd_manager = new CommandManager();
+        if ( !s_cmd_manager->Init() ) {
+            SAFE_DELETE(s_cmd_manager); 
         }
     }
-    return cmd_manager;
+    return s_cmd_manager;
 }
 
-bool CommandManager::init() {
+bool CommandManager::Init() {
     event_manager_ = new EventManager();
-    event_manager_->init();
+    event_manager_->Init();
 
-    cmd_listeners_vec_ = new std::vector<CommandListener*>();
+    cmd_listeners_ = new std::vector<CommandListener*>();
 
     return true;
 }
 
-void CommandManager::destoryInstance() {
-    CommandManager* cmd_manager = getInstance();
+void CommandManager::DestoryInstance() {
+    CommandManager* cmd_manager = instance();
     SAFE_DELETE(cmd_manager);    
 }
 
-void CommandManager::addCmdListener(CommandListener* listener) {
+void CommandManager::AddCmdListener(CommandListener* listener) {
     if (nullptr == listener || listener->is_registered())
         return;
 
-    assert(false != listener->checkValidity());
+    assert(false != listener->check_validity());
 
-    addCmdListener(listener, listener->priority());
+    AddCmdListener(listener, listener->priority());
 }
 
-void CommandManager::removeCmdListener(CommandListener* listener) {
+void CommandManager::RemoveCmdListener(CommandListener* listener) {
     if (nullptr == listener)
         return;
-    event_manager_->removeEventListener(listener->event_listener_);
-    removeCmdListenerImpl(listener, false);
+    event_manager_->RemoveEventListener(listener->event_listener_);
+    RemoveCmdListenerImpl(listener, false);
 }
 
-void CommandManager::removeCmdListenerWithCleanup(CommandListener* listener) {
+void CommandManager::RemoveCmdListenerWithCleanup(CommandListener* listener) {
     if (nullptr == listener)
         return;
-    event_manager_->removeEventListenerWithCleanup(listener->event_listener_);
-    removeCmdListenerImpl(listener, true);
+    event_manager_->RemoveEventListenerWithCleanup(listener->event_listener_);
+    RemoveCmdListenerImpl(listener, true);
 }
 
-void CommandManager::removeAllCmdListeners() {
-    removeAllEventListeners(false);
-    removeAllCmdListenersImpl(false);
+void CommandManager::RemoveAllCmdListeners() {
+    RemoveAllEventListeners(false);
+    RemoveAllCmdListenersImpl(false);
 }
 
-void CommandManager::removeAllCmdListenersWithcleanup() {
-    removeAllEventListeners(true);
-    removeAllCmdListenersImpl(true);
+void CommandManager::RemoveAllCmdListenersWithcleanup() {
+    RemoveAllEventListeners(true);
+    RemoveAllCmdListenersImpl(true);
 }
 
-void CommandManager::sendCmd(Command* cmd) {
-    event_manager_->dispatchComand(cmd);
+void CommandManager::SendCmd(Command* cmd) {
+    event_manager_->DispatchCommand(cmd);
 }
 
-void CommandManager::sendCmd(int cmd_id) {
-    event_manager_->dispatchComand(cmd_id);
+void CommandManager::SendCmd(int cmd_id) {
+    event_manager_->DispatchCommand(cmd_id);
 }
 
-void CommandManager::sendCmd(int cmd_id, void* user_data) {
-    event_manager_->dispatchComand(cmd_id, user_data);
+void CommandManager::SendCmd(int cmd_id, void* user_data) {
+    event_manager_->DispatchCommand(cmd_id, user_data);
 }
 
-void CommandManager::addCmdListener(CommandListener* listener, int priority) {
-    cmd_listeners_vec_->push_back(listener);
-    event_manager_->addEventListener(listener->event_listener_, priority);
+void CommandManager::AddCmdListener(CommandListener* listener, int priority) {
+    cmd_listeners_->push_back(listener);
+    event_manager_->AddEventListener(listener->event_listener_, priority);
 
-    sortCmdListeners(cmd_listeners_vec_);
+    SortCmdListeners(cmd_listeners_);
 }
 
-void CommandManager::sortCmdListeners(std::vector<CommandListener*>* cmd_listeners) {
+void CommandManager::SortCmdListeners(std::vector<CommandListener*>* cmd_listeners) {
     if (cmd_listeners->empty())
         return;
 
@@ -127,44 +127,44 @@ void CommandManager::sortCmdListeners(std::vector<CommandListener*>* cmd_listene
               });
 }
 
-void CommandManager::removeCmdListenerImpl(CommandListener* listener, bool cleanup) {
-    auto it = std::find(cmd_listeners_vec_->begin(), cmd_listeners_vec_->end(), listener);
-    if (cmd_listeners_vec_->end() != it) {
+void CommandManager::RemoveCmdListenerImpl(CommandListener* listener, bool cleanup) {
+    auto it = std::find(cmd_listeners_->begin(), cmd_listeners_->end(), listener);
+    if (cmd_listeners_->end() != it) {
         if (cleanup){
             SAFE_DELETE(*it);
         } else {
             ((CommandListener*)*it)->set_registered(false);
         }
-        cmd_listeners_vec_->erase(it);
+        cmd_listeners_->erase(it);
     }
 }
 
-void CommandManager::removeAllCmdListenersImpl(bool cleanup) {
+void CommandManager::RemoveAllCmdListenersImpl(bool cleanup) {
     if (event_manager_->is_dispatching()) {
         // TODO:set dirty flag
         return;
     }
 
     if (cleanup) {
-        std::for_each (cmd_listeners_vec_->begin(), 
-                       cmd_listeners_vec_->end(), 
+        std::for_each (cmd_listeners_->begin(), 
+                       cmd_listeners_->end(), 
                        gamer::delete_vector_obj());
     } else {
-        std::for_each (cmd_listeners_vec_->begin(), 
-                       cmd_listeners_vec_->end(), 
+        std::for_each (cmd_listeners_->begin(), 
+                       cmd_listeners_->end(), 
                        [&](CommandListener* cmd_listener) {        
                            cmd_listener->set_registered(false);
                        });
     }
 
-    cmd_listeners_vec_->clear();
+    cmd_listeners_->clear();
 }
 
-void CommandManager::removeAllEventListeners(bool cleanup) {
+void CommandManager::RemoveAllEventListeners(bool cleanup) {
     if (cleanup) {
-        event_manager_->removeAllEventListenersWithCleanup();
+        event_manager_->RemoveAllEventListenersWithCleanup();
     } else {
-        event_manager_->removeAllEventListeners();
+        event_manager_->RemoveAllEventListeners();
     }
 }
 

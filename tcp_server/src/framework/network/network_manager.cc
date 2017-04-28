@@ -25,7 +25,7 @@ modification:
 
 namespace gamer {
 
-NetworkManager* NetworkManager::GetInstance() {
+NetworkManager* NetworkManager::instance() {
 	static NetworkManager s_network_mgr;
 	return &s_network_mgr;
 }

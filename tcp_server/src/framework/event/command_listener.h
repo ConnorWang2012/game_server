@@ -29,16 +29,16 @@ class CommandListener {
     //typedef std::function<void(Event*)> CommandCallback;
     typedef std::function<void(Command*)> CommandCallback;
 
-    virtual ~CommandListener();
+    ~CommandListener();
 
     // use for c++ only.
-    static CommandListener* create(int cmd_id, 
+    static CommandListener* Create(int cmd_id, 
                                    const CommandCallback& cmd_callback, 
                                    const std::string& listener_name, 
                                    int priority);
 
     // use for lua only.
-    static CommandListener* create(int cmd_id, 
+    static CommandListener* Create(int cmd_id, 
                                    Listener::LuaFunction cmd_callback, 
                                    const std::string& listener_name,
                                    int priority);
@@ -67,19 +67,19 @@ class CommandListener {
 
     inline bool is_enabled() const { return event_listener_->is_enabled(); }
 
-    inline bool checkValidity() const { return event_listener_->checkValidity(); }
+    inline bool check_validity() const { return event_listener_->check_validity(); }
 
     inline bool is_registered() const { return event_listener_->is_registered(); }
 
   private:
     CommandListener();
     
-    bool init(int cmd_id, 
+    bool Init(int cmd_id, 
               const CommandCallback& command_callback, 
               const std::string& listener_name, 
               int priority);
 
-    bool init(int cmd_id, 
+    bool Init(int cmd_id, 
               Listener::LuaFunction command_callback, 
               const std::string& listener_name,
               int priority);

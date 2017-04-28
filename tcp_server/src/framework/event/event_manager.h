@@ -28,86 +28,90 @@ class EventListener;
 
 class EventManager {
   public:
+	EventManager& operator=(const EventManager&) = delete;
+
+	EventManager(const EventManager&) = delete;
+
 	~EventManager();
 
-	static EventManager* getInstance();
+	static EventManager* instance();
 
-	static void destoryInstance();
+	static void DestoryInstance();
 
-	void addEventListener(EventListener* listener);
+	void AddEventListener(EventListener* listener);
 
-    void dispatchEvent(Event* event);
+    void DispatchEvent(Event* event);
 
-    void dispatchEvent(int event_id, void* optional_user_data = nullptr);
-
-    // remove the event listener from the instance of event manager but do not delete it.
-	void removeEventListener(EventListener* listener);
-
-    // remove the event listener from the instance of event manager and delete it.
-    void removeEventListenerWithCleanup(EventListener* listener);
+    void DispatchEvent(int event_id, void* optional_user_data = nullptr);
 
     // remove the event listener from the instance of event manager but do not delete it.
-	void removeEventListener(const std::string& listener_name);
+	void RemoveEventListener(EventListener* listener);
 
     // remove the event listener from the instance of event manager and delete it.
-    void removeEventListenerWithCleanup(const std::string& listener_name);
+    void RemoveEventListenerWithCleanup(EventListener* listener);
+
+    // remove the event listener from the instance of event manager but do not delete it.
+	void RemoveEventListener(const std::string& listener_name);
+
+    // remove the event listener from the instance of event manager and delete it.
+    void RemoveEventListenerWithCleanup(const std::string& listener_name);
 
     // remove all event listeners from the instance of event manager but do not delete any.
-	void removeAllEventListeners();
+	void RemoveAllEventListeners();
 
     // remove all event listeners from the instance of event manager and delete all.
-    void removeAllEventListenersWithCleanup();
+    void RemoveAllEventListenersWithCleanup();
 
-	void setPriority(EventListener* listener, int priority);
+	void SetPriority(EventListener* listener, int priority);
 
     inline void set_enabled(bool enabled) { is_enabled_ = enabled; }
 
-    inline bool is_enabled() const { return is_enabled_; }
+    inline bool enabled() const { return is_enabled_; }
 
 private:
-    typedef std::map<int, std::vector<EventListener*> >	EventIDListenerMap;
+    typedef std::map<int, std::vector<EventListener*>>	EventListenerMap;
 
     enum class DirtyFlag {
-        NONE                     = 0,
-        LISTENER_PRIORITY_CHANGE = 1,
-        LISTENER_NUM_CHANGE      = 2,
-        ALL                      = 10
+        DIRTY_FLAG_NONE                     = 0,
+        DIRTY_FLAG_LISTENER_PRIORITY_CHANGE = 1,
+        DIRTY_FLAG_LISTENER_NUM_CHANGE      = 2,
+        DIRTY_FLAG_ALL                      = 10
     };
 
 	EventManager();
     
-    bool init();
+    bool Init();
 
-    void addEventListener(EventListener* listener, int priority);
+    void AddEventListener(EventListener* listener, int priority);
 
-	void addEventListenerImpl(EventListener* listener, int priority);
+	void AddEventListenerImpl(EventListener* listener, int priority);
 
-    void removeEventListenerImpl(EventListener* listener, bool cleanup);
+    void RemoveEventListenerImpl(EventListener* listener, bool cleanup);
 
-    void removeEventListenerImpl(const std::string& listener_name, bool cleanup);
+    void RemoveEventListenerImpl(const std::string& listener_name, bool cleanup);
 
-    void removeAllEventListenersImpl(bool cleanup);
+    void RemoveAllEventListenersImpl(bool cleanup);
 
-	void sortEventListeners(std::vector<EventListener*>* listeners);
+	void SortEventListeners(std::vector<EventListener*>* listeners);
 
-	void sortEventListeners(int event_id);
+	void SortEventListeners(int event_id);
 
-	void dispatchEvent(std::vector<EventListener*> listeners, Event* event);
-
-    // use for command manager.
-    void dispatchComand(Command* cmd);
+	void DispatchEvent(std::vector<EventListener*> listeners, Event* event);
 
     // use for command manager.
-    void dispatchComand(int cmd_id, void* optional_user_data = nullptr);
+    void DispatchCommand(Command* cmd);
 
     // use for command manager.
-    void dispatchCommandImpl(std::vector<EventListener*> listeners, Command* cmd);
+    void DispatchCommand(int cmd_id, void* optional_user_data = nullptr);
 
-	bool setPriority(std::vector<EventListener*> listener_list, 
+    // use for command manager.
+    void DispatchCommandImpl(std::vector<EventListener*> listeners, Command* cmd);
+
+	bool SetPriority(std::vector<EventListener*> listener_list, 
                      EventListener* listener, 
                      int priority);
 
-	void updateEventListeners();
+	void UpdateEventListeners();
 
     inline bool is_dispatching() { return 0 < dispatch_count_; }
 
@@ -120,13 +124,13 @@ private:
 
     inline DirtyFlag dirty_flag() const { return dirty_flag_; }
 
-	inline bool is_dirty() const { return DirtyFlag::NONE != dirty_flag_; }
+	inline bool is_dirty() const { return DirtyFlag::DIRTY_FLAG_NONE != dirty_flag_; }
 
-	static EventManager* s_shared_event_manager_;
+	static EventManager* s_event_manager_;
 
-	EventIDListenerMap id_listener_map_;
+	EventListenerMap event_listener_;
 
-	std::vector<EventListener*> listeners_to_add_vec_;
+	std::vector<EventListener*> listeners_to_add_;
 
 	// Whether the event manager is dispatching event(0 mean not) 
 	int dispatch_count_;

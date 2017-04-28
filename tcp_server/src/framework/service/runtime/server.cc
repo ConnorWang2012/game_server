@@ -18,13 +18,13 @@ modification:
 
 namespace gamer {
 
-Server* Server::GetInstance() {
+Server* Server::instance() {
 	static Server s_server;
 	return &s_server;
 }
 
 void Server::Start() {
-	NetworkManager::GetInstance()->InitSocket();
+	NetworkManager::instance()->InitSocket();
 }
 
 void Server::Stop() {

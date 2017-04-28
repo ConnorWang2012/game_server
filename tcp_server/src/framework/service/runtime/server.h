@@ -25,7 +25,7 @@ class Server {
 
 	Server(const Server&) = delete;
 	
-	static Server* GetInstance();
+	static Server* instance();
 
 	void Start();
 

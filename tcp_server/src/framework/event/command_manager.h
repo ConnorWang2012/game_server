@@ -21,56 +21,60 @@
 
 namespace gamer {
 
-class EventManager;
 class Command;
 class CommandListener;
+class EventManager;
 
 class CommandManager {
-  public:    
+  public: 
+	CommandManager& operator=(const CommandManager&) = delete;
+
+	CommandManager(const CommandManager&) = delete;
+
     ~CommandManager();
 
-    static CommandManager* getInstance();
+    static CommandManager* instance();
 
-    static void destoryInstance();
+    static void DestoryInstance();
 
-    void addCmdListener(CommandListener* listener);
+    void AddCmdListener(CommandListener* listener);
 
     // remove the cmd listener from the instance of cmd manager but do not delete it.
-    void removeCmdListener(CommandListener* listener);
+    void RemoveCmdListener(CommandListener* listener);
 
     // remove the cmd listener from the instance of cmd manager and delete it.
-    void removeCmdListenerWithCleanup(CommandListener* listener);
+    void RemoveCmdListenerWithCleanup(CommandListener* listener);
 
     // remove all cmd listeners from the instance of cmd manager but do not delete any.
-    void removeAllCmdListeners();
+    void RemoveAllCmdListeners();
 
     // remove all cmd listeners from the instance of cmd manager and delete all.
-    void removeAllCmdListenersWithcleanup();
+    void RemoveAllCmdListenersWithcleanup();
 
-    void sendCmd(Command* cmd);
+    void SendCmd(Command* cmd);
 
-    void sendCmd(int cmd_id);
+    void SendCmd(int cmd_id);
 
     // TODO : bind to lua
-    void sendCmd(int cmd_id, void* user_data);
+    void SendCmd(int cmd_id, void* user_data);
 
   private:
     CommandManager();
 
-    bool init();
+    bool Init();
 
-    void addCmdListener(CommandListener* listener, int priority);
+    void AddCmdListener(CommandListener* listener, int priority);
 
-    void sortCmdListeners(std::vector<CommandListener*>* cmd_listeners);
+    void SortCmdListeners(std::vector<CommandListener*>* cmd_listeners);
 
-    void removeCmdListenerImpl(CommandListener* listener, bool cleanup);
+    void RemoveCmdListenerImpl(CommandListener* listener, bool cleanup);
 
-    void removeAllCmdListenersImpl(bool cleanup);
+    void RemoveAllCmdListenersImpl(bool cleanup);
 
-    void removeAllEventListeners(bool cleanup);
+    void RemoveAllEventListeners(bool cleanup);
 
     EventManager* event_manager_;
-    std::vector<CommandListener*>* cmd_listeners_vec_;
+    std::vector<CommandListener*>* cmd_listeners_;
 };
 
 } // namespace gamer

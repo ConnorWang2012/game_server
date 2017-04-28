@@ -24,13 +24,13 @@ CommandListener::CommandListener() : event_listener_(nullptr) {
 CommandListener::~CommandListener() {
 }
 
-CommandListener* CommandListener::create(
+CommandListener* CommandListener::Create(
     int cmd_id, 
     const CommandCallback& cmd_callback, 
     const std::string& listener_name, 
     int priority) {
     CommandListener* listener = new CommandListener();
-    if (listener && listener->init(cmd_id, 
+    if (listener && listener->Init(cmd_id, 
                                    cmd_callback, 
                                    listener_name, 
                                    priority)) {
@@ -40,13 +40,13 @@ CommandListener* CommandListener::create(
     return nullptr;
 }
 
-CommandListener* CommandListener::create(
+CommandListener* CommandListener::Create(
     int cmd_id, 
     Listener::LuaFunction cmd_callback, 
     const std::string& listener_name,
     int priority) {
     CommandListener* listener = new CommandListener();
-    if (listener && listener->init(cmd_id, 
+    if (listener && listener->Init(cmd_id, 
                                    cmd_callback, 
                                    listener_name, 
                                    priority))
@@ -57,22 +57,22 @@ CommandListener* CommandListener::create(
     return nullptr;
 }
 
-bool CommandListener::init(int cmd_id, 
+bool CommandListener::Init(int cmd_id, 
                            const CommandCallback& cmd_callback, 
                            const std::string& listener_name, 
                            int priority) {
-    event_listener_ = EventListener::createCmdListener(cmd_id, 
+    event_listener_ = EventListener::CreateCmdListener(cmd_id, 
                                                        cmd_callback, 
                                                        listener_name, 
                                                        priority);
     return true;
 }
 
-bool CommandListener::init(int cmd_id, 
+bool CommandListener::Init(int cmd_id, 
                            Listener::LuaFunction cmd_callback, 
                            const std::string& listener_name,
                            int priority) {
-    event_listener_ = EventListener::create(cmd_id, cmd_callback, listener_name, priority);
+    event_listener_ = EventListener::Create(cmd_id, cmd_callback, listener_name, priority);
     return true;
 }
 

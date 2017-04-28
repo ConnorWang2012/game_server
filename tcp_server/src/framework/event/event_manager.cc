@@ -45,43 +45,43 @@ class DispatchGuard {
 
 namespace gamer {
 
-EventManager* EventManager::s_shared_event_manager_ = nullptr;
+EventManager* EventManager::s_event_manager_ = nullptr;
 
 EventManager::EventManager()
     :dispatch_count_(0)
     ,is_enabled_(true)
-    ,dirty_flag_(DirtyFlag::NONE)
+    ,dirty_flag_(DirtyFlag::DIRTY_FLAG_NONE)
     ,dirty_event_id_(0)
     ,dirty_event_name_("") {
 }
 
 EventManager::~EventManager() {
-    removeAllEventListenersWithCleanup();
+    RemoveAllEventListenersWithCleanup();
 }
 
-EventManager* EventManager::getInstance() {
-	if (nullptr == s_shared_event_manager_) {
-		s_shared_event_manager_ = new EventManager();
-		if( !s_shared_event_manager_->init() ) {
-			SAFE_DELETE(s_shared_event_manager_);
+EventManager* EventManager::instance() {
+	if (nullptr == s_event_manager_) {
+		s_event_manager_ = new EventManager();
+		if( !s_event_manager_->Init() ) {
+			SAFE_DELETE(s_event_manager_);
 		}
 	}
-	return s_shared_event_manager_;
+	return s_event_manager_;
 }
 
-void EventManager::destoryInstance() {
-	SAFE_DELETE(s_shared_event_manager_);
+void EventManager::DestoryInstance() {
+	SAFE_DELETE(s_event_manager_);
 }
 
-void EventManager::addEventListener(EventListener* listener) {
+void EventManager::AddEventListener(EventListener* listener) {
     if (nullptr == listener || listener->is_registered())
         return;
-    assert(false != listener->checkValidity());
+    assert(false != listener->check_validity());
 
-    addEventListener(listener, listener->priority());
+    AddEventListener(listener, listener->priority());
 }
 
-void EventManager::dispatchEvent(Event* event) {
+void EventManager::DispatchEvent(Event* event) {
     assert(nullptr != event);
     assert(false != event->check_event_id());
 
@@ -90,16 +90,16 @@ void EventManager::dispatchEvent(Event* event) {
 
     DispatchGuard guard(dispatch_count_);
 
-    auto listenerMap = id_listener_map_.find(event->event_id());
-    if (id_listener_map_.end() != listenerMap) {
+    auto listenerMap = event_listener_.find(event->event_id());
+    if (event_listener_.end() != listenerMap) {
         auto listeners = listenerMap->second;
-        dispatchEvent(listeners, event);
+        DispatchEvent(listeners, event);
     }
 
-    updateEventListeners();
+    UpdateEventListeners();
 }
 
-void EventManager::dispatchEvent(int event_id, void* optional_user_data) {
+void EventManager::DispatchEvent(int event_id, void* optional_user_data) {
     //assert(EventIDs::INVALID != event_id);
     assert(event_id > 0);
 
@@ -115,51 +115,51 @@ void EventManager::dispatchEvent(int event_id, void* optional_user_data) {
         evn.set_user_data(optional_user_data);
     }
 
-    auto listenerMap = id_listener_map_.find(event_id);
-    if (id_listener_map_.end() != listenerMap) {
+    auto listenerMap = event_listener_.find(event_id);
+    if (event_listener_.end() != listenerMap) {
         auto listeners = listenerMap->second;
-        dispatchEvent(listeners, &evn);
+        DispatchEvent(listeners, &evn);
     }
 
-    updateEventListeners();
+    UpdateEventListeners();
 }
 
-void EventManager::removeEventListener(EventListener* listener) {
+void EventManager::RemoveEventListener(EventListener* listener) {
 	if (nullptr == listener)
 		return;
-    removeEventListenerImpl(listener, false);
+    RemoveEventListenerImpl(listener, false);
 }
 
-void EventManager::removeEventListener(const std::string& listener_name) {
-    removeEventListenerImpl(listener_name, false);
+void EventManager::RemoveEventListener(const std::string& listener_name) {
+    RemoveEventListenerImpl(listener_name, false);
 }
 
-void EventManager::removeEventListenerWithCleanup(EventListener* listener) {
+void EventManager::RemoveEventListenerWithCleanup(EventListener* listener) {
     if (nullptr == listener)
         return;
-    removeEventListenerImpl(listener, true);
+    RemoveEventListenerImpl(listener, true);
 }
 
-void EventManager::removeEventListenerWithCleanup(const std::string& listener_name) {
-    removeEventListenerImpl(listener_name, true);
+void EventManager::RemoveEventListenerWithCleanup(const std::string& listener_name) {
+    RemoveEventListenerImpl(listener_name, true);
 }
 
-void EventManager::removeAllEventListeners() {
-    removeAllEventListenersImpl(false);
+void EventManager::RemoveAllEventListeners() {
+    RemoveAllEventListenersImpl(false);
 }
 
-void EventManager::removeAllEventListenersWithCleanup() {
-    removeAllEventListenersImpl(true);
+void EventManager::RemoveAllEventListenersWithCleanup() {
+    RemoveAllEventListenersImpl(true);
 }
 
-void EventManager::setPriority(EventListener* listener, int priority) {
+void EventManager::SetPriority(EventListener* listener, int priority) {
 	if (nullptr == listener)
 		return;
 
-	for (auto it = id_listener_map_.begin(); it != id_listener_map_.end(); ++it) {
+	for (auto it = event_listener_.begin(); it != event_listener_.end(); ++it) {
 		auto listener_list = it->second;
-		if(setPriority(listener_list, listener, priority)) {
-			set_dirty_flag(DirtyFlag::LISTENER_PRIORITY_CHANGE, 
+		if(SetPriority(listener_list, listener, priority)) {
+			set_dirty_flag(DirtyFlag::DIRTY_FLAG_LISTENER_PRIORITY_CHANGE, 
                 listener->event_id());
 			break;
 		}
@@ -171,49 +171,49 @@ void EventManager::setPriority(EventListener* listener, int priority) {
 	//}
 }
 
-bool EventManager::init() {
+bool EventManager::Init() {
     return true;
 }
 
-void EventManager::addEventListener(EventListener* listener, int priority) {
+void EventManager::AddEventListener(EventListener* listener, int priority) {
     //assert(nullptr != listener);
     //assert(false != listener->checkValidity());
 
     if ( !is_dispatching() ) {
-        addEventListenerImpl(listener, priority);
+        AddEventListenerImpl(listener, priority);
     } else {
-        listeners_to_add_vec_.push_back(listener);
-        set_dirty_flag(DirtyFlag::LISTENER_NUM_CHANGE);
+        listeners_to_add_.push_back(listener);
+        set_dirty_flag(DirtyFlag::DIRTY_FLAG_LISTENER_NUM_CHANGE);
     }
 }
 
-void EventManager::addEventListenerImpl(EventListener* listener, 
+void EventManager::AddEventListenerImpl(EventListener* listener, 
                                         int priority) {
-	EventIDListenerMap::iterator it = id_listener_map_.find(
+	EventListenerMap::iterator it = event_listener_.find(
         listener->event_id());
-	if(id_listener_map_.end() != it) {
+	if(event_listener_.end() != it) {
 		std::vector<EventListener*>* vecListener = &it->second;
 		vecListener->push_back(listener);        
 
-		sortEventListeners(vecListener);
+		SortEventListeners(vecListener);
 	} else {
 		std::vector<EventListener*> vListener(1, listener);
 		// _sListenerMap.insert(std::make_pair(listener->_eventName, vListener));
-		id_listener_map_.insert(EventIDListenerMap::value_type(
+		event_listener_.insert(EventListenerMap::value_type(
             listener->event_id(), vListener));
 	}	
 
     listener->set_registered(true);
 }
 
-void EventManager::removeEventListenerImpl(EventListener* listener, bool cleanup) {
+void EventManager::RemoveEventListenerImpl(EventListener* listener, bool cleanup) {
     if (is_dispatching()) {
         // TODO:set dirty flag
         return;
     }
 
     // 1. find listener from id_listener_map_
-    for (auto it = id_listener_map_.begin();it != id_listener_map_.end();++it) {
+    for (auto it = event_listener_.begin();it != event_listener_.end();++it) {
         auto iter = std::find(it->second.begin(), it->second.end(), listener);
         if (it->second.end() != iter) {
             if (cleanup) {
@@ -227,22 +227,22 @@ void EventManager::removeEventListenerImpl(EventListener* listener, bool cleanup
     }
 
     // 2. find listener from listeners_to_add_vec_
-    if ( !listeners_to_add_vec_.empty() ) {
-        std::sort(listeners_to_add_vec_.begin(), listeners_to_add_vec_.end());
+    if ( !listeners_to_add_.empty() ) {
+        std::sort(listeners_to_add_.begin(), listeners_to_add_.end());
 
-        auto it = std::find(listeners_to_add_vec_.begin(), listeners_to_add_vec_.end(), listener);
+        auto it = std::find(listeners_to_add_.begin(), listeners_to_add_.end(), listener);
 
-        if (listeners_to_add_vec_.end() != it){
+        if (listeners_to_add_.end() != it){
             if (cleanup) {
                 SAFE_DELETE(*it);
             }
-            listeners_to_add_vec_.erase(it);
+            listeners_to_add_.erase(it);
             return;
         }
     }
 }
 
-void EventManager::removeEventListenerImpl(const std::string& listener_name, 
+void EventManager::RemoveEventListenerImpl(const std::string& listener_name, 
                                            bool cleanup) {
     if (is_dispatching()) {
         // TODO:set dirty flag
@@ -250,7 +250,7 @@ void EventManager::removeEventListenerImpl(const std::string& listener_name,
     }
 
     // 1. find listener from id_listener_map_
-    for (auto it = id_listener_map_.begin();it != id_listener_map_.end();++it) {
+    for (auto it = event_listener_.begin();it != event_listener_.end();++it) {
         auto iter = std::find_if(it->second.begin(), 
 								 it->second.end(), 
 								 [&](const EventListener* l) {
@@ -269,32 +269,32 @@ void EventManager::removeEventListenerImpl(const std::string& listener_name,
     }
 
     // 2. find listener from listeners_to_add_vec_
-    if ( !listeners_to_add_vec_.empty() ) {
-        std::sort(listeners_to_add_vec_.begin(), listeners_to_add_vec_.end());
-        auto iter = std::find_if(listeners_to_add_vec_.begin(), 
-								 listeners_to_add_vec_.end(), 
+    if ( !listeners_to_add_.empty() ) {
+        std::sort(listeners_to_add_.begin(), listeners_to_add_.end());
+        auto iter = std::find_if(listeners_to_add_.begin(), 
+								 listeners_to_add_.end(), 
 								 [=](const EventListener* l) {
 									 return (l->listener_name() == listener_name);
 								 });
 
-        if (listeners_to_add_vec_.end() != iter) {
+        if (listeners_to_add_.end() != iter) {
             if (cleanup) {
                 SAFE_DELETE(*iter);
             }
-            listeners_to_add_vec_.erase(iter);
+            listeners_to_add_.erase(iter);
             return;
         }
     }
 }
 
-void EventManager::removeAllEventListenersImpl(bool cleanup) {
+void EventManager::RemoveAllEventListenersImpl(bool cleanup) {
     if (is_dispatching()) {
         // TODO:set dirty flag
         return;
     }
 
     bool delete_ok = true;
-    for (auto it = id_listener_map_.begin(); it != id_listener_map_.end(); ++it) {
+    for (auto it = event_listener_.begin(); it != event_listener_.end(); ++it) {
         auto listeners   = it->second;
         bool all_deleted = true;
         if (cleanup) {
@@ -323,11 +323,11 @@ void EventManager::removeAllEventListenersImpl(bool cleanup) {
     }
 
     if (delete_ok) {
-        id_listener_map_.clear();
+        event_listener_.clear();
     }
 }
 
-void EventManager::sortEventListeners(std::vector<EventListener*>* listeners) {
+void EventManager::SortEventListeners(std::vector<EventListener*>* listeners) {
 	std::sort(listeners->begin(), 
               listeners->end(), 
               [&](const EventListener* l1, 
@@ -336,19 +336,19 @@ void EventManager::sortEventListeners(std::vector<EventListener*>* listeners) {
 	          });
 }
 
-void EventManager::sortEventListeners(int event_id) {
-	auto it = id_listener_map_.find(event_id);
-	if (id_listener_map_.end() != it) {
-		sortEventListeners(&it->second);
+void EventManager::SortEventListeners(int event_id) {
+	auto it = event_listener_.find(event_id);
+	if (event_listener_.end() != it) {
+		SortEventListeners(&it->second);
 	}
 }
 
-void EventManager::dispatchEvent(std::vector<EventListener*> listeners, 
+void EventManager::DispatchEvent(std::vector<EventListener*> listeners, 
                                  Event* event) {
     for (auto& l : listeners) {
         if (l->is_enabled()) {
             if (l->is_lua_function()) {
-                //LuaBindHelper::getInstance()->dispatchEvent(l->lua_function_id(), event);
+                //LuaBindHelper::instance()->dispatchEvent(l->lua_function_id(), event);
             } else {
                 l->event_callback_(event);
             }
@@ -356,7 +356,7 @@ void EventManager::dispatchEvent(std::vector<EventListener*> listeners,
     }
 }
 
-void EventManager::dispatchComand(Command* cmd) {
+void EventManager::DispatchCommand(Command* cmd) {
     assert(nullptr != cmd);
     assert(false != cmd->check_command_id());
     if ( !is_enabled_ )
@@ -364,15 +364,15 @@ void EventManager::dispatchComand(Command* cmd) {
 
     DispatchGuard guard(dispatch_count_);
 
-    auto listenerMap = id_listener_map_.find(cmd->command_id());
-    if (id_listener_map_.end() != listenerMap) {
-        dispatchCommandImpl(listenerMap->second, cmd);
+    auto listenerMap = event_listener_.find(cmd->command_id());
+    if (event_listener_.end() != listenerMap) {
+        DispatchCommandImpl(listenerMap->second, cmd);
     }
 
-    updateEventListeners();
+    UpdateEventListeners();
 }
 
-void EventManager::dispatchComand(int cmd_id, void* optional_user_data/*= nullptr*/) {
+void EventManager::DispatchCommand(int cmd_id, void* optional_user_data/*= nullptr*/) {
     assert(cmd_id > 0);
 
     if ( !is_enabled_ )
@@ -385,21 +385,21 @@ void EventManager::dispatchComand(int cmd_id, void* optional_user_data/*= nullpt
         cmd.set_user_data(optional_user_data);
     }
 
-    auto listenerMap = id_listener_map_.find(cmd_id);
-    if (id_listener_map_.end() != listenerMap) {
+    auto listenerMap = event_listener_.find(cmd_id);
+    if (event_listener_.end() != listenerMap) {
         auto listeners = listenerMap->second;
-        dispatchCommandImpl(listeners, &cmd);
+        DispatchCommandImpl(listeners, &cmd);
     }
 
-    updateEventListeners();
+    UpdateEventListeners();
 }
 
-void EventManager::dispatchCommandImpl(std::vector<EventListener*> listeners, Command* cmd) {
+void EventManager::DispatchCommandImpl(std::vector<EventListener*> listeners, Command* cmd) {
     for (auto& l : listeners) {
         if (l->is_enabled()) {
             if (l->is_lua_function()) {
-                //LuaBindHelper::getInstance()->dispatchEvent(l->lua_function_id(), event);
-                // TODO : imply LuaBindHelper::getInstance()->dispatchCommand(l->lua_function_id(), cmd);
+                //LuaBindHelper::instance()->dispatchEvent(l->lua_function_id(), event);
+                // TODO : imply LuaBindHelper::instance()->dispatchCommand(l->lua_function_id(), cmd);
             } else {
                 l->cmd_callback_(cmd);
             }
@@ -407,7 +407,7 @@ void EventManager::dispatchCommandImpl(std::vector<EventListener*> listeners, Co
     }
 }
 
-bool EventManager::setPriority(std::vector<EventListener*> listener_list, 
+bool EventManager::SetPriority(std::vector<EventListener*> listener_list, 
                                EventListener* listener, 
                                int priority) {
 	auto found = std::find(listener_list.begin(), listener_list.end(), listener);
@@ -418,36 +418,36 @@ bool EventManager::setPriority(std::vector<EventListener*> listener_list,
 	return false;
 }
 
-void EventManager::updateEventListeners() {
+void EventManager::UpdateEventListeners() {
 	if ( !is_dirty() )
 		return;
 
 	DirtyFlag flag = dirty_flag();
 	switch (flag) {
-	case DirtyFlag::NONE:
+	case DirtyFlag::DIRTY_FLAG_NONE:
 		break;
-	case DirtyFlag::LISTENER_PRIORITY_CHANGE: {
-			sortEventListeners(dirty_event_id_);
+	case DirtyFlag::DIRTY_FLAG_LISTENER_PRIORITY_CHANGE: {
+			SortEventListeners(dirty_event_id_);
 		}
 		break;
-	case DirtyFlag::LISTENER_NUM_CHANGE: {
-			if ( !listeners_to_add_vec_.empty() ) {
-				for (auto& listener : listeners_to_add_vec_) {
-					addEventListener(listener);
+	case DirtyFlag::DIRTY_FLAG_LISTENER_NUM_CHANGE: {
+			if ( !listeners_to_add_.empty() ) {
+				for (auto& listener : listeners_to_add_) {
+					AddEventListener(listener);
 				}
-				listeners_to_add_vec_.clear();
+				listeners_to_add_.clear();
 			}
 		}
 		break;
-	case DirtyFlag::ALL: {
-			sortEventListeners(dirty_event_id_);
+	case DirtyFlag::DIRTY_FLAG_ALL: {
+			SortEventListeners(dirty_event_id_);
 		}
 		break;
 	default:
 		break;
 	}
 
-	set_dirty_flag(DirtyFlag::NONE);
+	set_dirty_flag(DirtyFlag::DIRTY_FLAG_NONE);
 }
 
 } // namespace gamer

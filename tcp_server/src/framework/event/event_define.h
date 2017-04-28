@@ -18,10 +18,7 @@
 namespace gamer {
 
 enum class EventIDs {
-    INVALID,
-    EVENT_ID_ACTORS_CREATED,
-	HERO_UNDER_ATTACK,
-	HERO_DEAD
+	EVENT_INVALID
 };
 
 } // namespace gamer
