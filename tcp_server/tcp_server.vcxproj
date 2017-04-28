@@ -89,7 +89,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_WINSOCK_DEPRECATED_NO_WARNINGS;CONNOR_GAME_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)libevent\src;$(SolutionDir)libevent\src\compat;$(SolutionDir)libevent\src\include;$(SolutionDir)libevent\src\include\event2;$(SolutionDir)libevent\src\include\openssl;$(SolutionDir)libevent\src\WIN32-Code;$(SolutionDir)libevent\src\WIN32-Code\nmake;$(SolutionDir)libevent\src\WIN32-Code\nmake\event2;$(SolutionDir)tcp_server\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -305,6 +305,7 @@
     <ClInclude Include="src\framework\event\event_listener.h" />
     <ClInclude Include="src\framework\event\event_manager.h" />
     <ClInclude Include="src\framework\event\listener.h" />
+    <ClInclude Include="src\framework\log\log.h" />
     <ClInclude Include="src\framework\network\network_manager.h" />
     <ClInclude Include="src\framework\service\runtime\server.h" />
     <ClInclude Include="src\framework\service\runtime\server_protocal.h" />
@@ -318,6 +319,7 @@
     <ClCompile Include="src\framework\event\event_listener.cc" />
     <ClCompile Include="src\framework\event\event_manager.cc" />
     <ClCompile Include="src\framework\event\listener.cc" />
+    <ClCompile Include="src\framework\log\log.cc" />
     <ClCompile Include="src\framework\network\network_manager.cc" />
     <ClCompile Include="src\framework\service\runtime\server.cc" />
   </ItemGroup>

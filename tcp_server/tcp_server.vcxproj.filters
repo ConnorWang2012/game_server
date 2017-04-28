@@ -529,6 +529,9 @@
     <ClInclude Include="src\framework\base\macros.h">
       <Filter>src\framework\base</Filter>
     </ClInclude>
+    <ClInclude Include="src\framework\log\log.h">
+      <Filter>src\framework\log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -560,6 +563,9 @@
     </ClCompile>
     <ClCompile Include="src\framework\service\runtime\server.cc">
       <Filter>src\framework\service\runtime</Filter>
+    </ClCompile>
+    <ClCompile Include="src\framework\log\log.cc">
+      <Filter>src\framework\log</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -14,16 +14,29 @@ modification:
 
 #include "network_manager.h"
 
+#ifdef _WIN32
+#include <WinSock2.h>
+#endif
+
 #include "event2/buffer.h"
 #include "event2/bufferevent.h"
 #include "event2/event.h"
 #include "event2/listener.h"
 
-#ifdef _WIN32
-#include <WinSock2.h>
-#endif
+#include "framework/log/log.h"
+#include "framework/base/macros.h"
 
 namespace gamer {
+
+NetworkManager::NetworkManager() : NetworkManager("127.0.0.1", 4994) {
+}
+
+NetworkManager::NetworkManager(const std::string& ip, int port)
+	:ip_(ip)
+	,port_(port)
+	,evbase_(nullptr)
+	,connlistener_(nullptr) {
+}
 
 NetworkManager* NetworkManager::instance() {
 	static NetworkManager s_network_mgr;
@@ -42,7 +55,7 @@ void NetworkManager::InitSocket() {
 		evbase_ = event_base_new();
 	}
 	if (nullptr == evbase_) {
-		perror("[NetworkManager::InitSocket] event_base_new failed!");
+		LOGERROR("[NetworkManager::InitSocket] event_base_new failed!");
 		return;
 	}
 
@@ -62,10 +75,11 @@ void NetworkManager::InitSocket() {
 			sizeof(sin));
 	}
 	if (nullptr == connlistener_) {
-		perror("[NetworkManager::InitSocket] evconnlistener_new_bind failed!");
+		LOGERROR("[NetworkManager::InitSocket] evconnlistener_new_bind failed!");
 		return;
 	}
-	printf("[NetworkManager::InitSocket] tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
+	//log::printgreen("[NetworkManager::InitSocket] tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
+	LOGGREEN("[NetworkManager::InitSocket] tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
 
 	evconnlistener_set_error_cb(connlistener_, OnConnErrorOccur);
 
@@ -78,7 +92,7 @@ void NetworkManager::OnConnAccept(struct evconnlistener* listener,
 								  int socklen,
                                   void* ctx) {
 	// We got a new connection! Set up a bufferevent for it.
-	printf("[NetworkManager::InitSocket] one client connected\n");
+	LOGGREEN("[NetworkManager::InitSocket] one client connected\n");
 	auto base = evconnlistener_get_base(listener);
 	//int ret = evutil_make_socket_nonblocking(fd);
 	auto bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
@@ -96,7 +110,7 @@ void NetworkManager::OnConnErrorOccur(struct evconnlistener* listener, void* ctx
 
 void NetworkManager::OnBuffereventArrive(struct bufferevent* bev, short event, void* ctx) {
 	if (event & BEV_EVENT_ERROR) {
-		printf("error from bufferevent!\n");
+		LOGERROR("[NetworkManager::OnBuffereventArrive] error from bufferevent!\n");
 	}
 
 	if (event & (BEV_EVENT_EOF | BEV_EVENT_ERROR)) {
@@ -104,15 +118,15 @@ void NetworkManager::OnBuffereventArrive(struct bufferevent* bev, short event, v
 	}
 
 	if (event & BEV_EVENT_CONNECTED) {
-		printf("client connected\n");
+		LOGGREEN("[NetworkManager::OnBuffereventArrive] client connected\n");
 		//write_cb(bev, NULL);
 		//char msg[] = "client connected";
 		//bufferevent_write(bev, msg, sizeof(msg));
-		struct evbuffer* input = bufferevent_get_input(bev);
-		struct evbuffer* output = bufferevent_get_output(bev);
+		auto input = bufferevent_get_input(bev);
+		auto output = bufferevent_get_output(bev);
 		evbuffer_add_printf(output, "client msg : %s", "client connected");
 	} else if (event & BEV_EVENT_TIMEOUT) {
-		printf("client connect timeout");
+		LOGERROR("[NetworkManager::OnBuffereventArrive] client connect timeout");
 	}
 }
 

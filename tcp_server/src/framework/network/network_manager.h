@@ -38,14 +38,9 @@ class NetworkManager {
 	void InitSocket();
 
   private:
-	NetworkManager() : NetworkManager("127.0.0.1", 4994) {}
+	NetworkManager();
 
-	NetworkManager(const std::string& ip, int port)
-		:ip_(ip)
-		,port_(port)
-		,evbase_(nullptr)
-		,connlistener_(nullptr) {
-	}
+	NetworkManager(const std::string& ip, int port);
 
 	bool Init();
 

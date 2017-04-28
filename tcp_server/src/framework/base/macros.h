@@ -28,6 +28,16 @@ namespace gamer {
 #define CALLBACK_SELECTOR_2(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, std::placeholders::_2, ##__VA_ARGS__)
 #define CALLBACK_SELECTOR_3(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, ##__VA_ARGS__)
 
+#if !defined(CONNOR_GAME_DEBUG) || CONNOR_GAME_DEBUG == 0
+#define LOG(...)        do {} while (0)
+#define LOGERROR(...)   do {} while (0)
+#define LOGGREEN(...)   do {} while (0)
+#elif CONNOR_GAME_DEBUG == 1
+#define LOG(format, ...)        gamer::log::printf(format, ##__VA_ARGS__)
+#define LOGERROR(format, ...)   gamer::log::printferr(format, ##__VA_ARGS__)
+#define LOGGREEN(format, ...)   gamer::log::printfgreen(format, ##__VA_ARGS__)
+#endif
+
 } // namespace gamer
 
 #endif // CONNOR_GAME_SRC_MACROS_H_
