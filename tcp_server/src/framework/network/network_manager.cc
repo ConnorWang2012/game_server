@@ -78,7 +78,7 @@ void NetworkManager::InitSocket() {
 		return;
 	}
 
-	LOGGREEN("[NetworkManager::InitSocket] tcp listen on : %s, port : %d\n", ip_.c_str(), port_);
+	LOGGREEN("[NetworkManager::InitSocket] tcp listen on : %s, port : %d", ip_.c_str(), port_);
 
 	evconnlistener_set_error_cb(connlistener_, OnConnErrorOccur);
 
@@ -91,7 +91,7 @@ void NetworkManager::OnConnAccept(struct evconnlistener* listener,
 								  int socklen,
                                   void* ctx) {
 	// We got a new connection! Set up a bufferevent for it.
-	LOGGREEN("[NetworkManager::InitSocket] one client connected\n");
+	LOGGREEN("[NetworkManager::InitSocket] one client connected");
 	auto base = evconnlistener_get_base(listener);
 	//int ret = evutil_make_socket_nonblocking(fd);
 	auto bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
@@ -103,13 +103,13 @@ void NetworkManager::OnConnErrorOccur(struct evconnlistener* listener, void* ctx
 	auto base = evconnlistener_get_base(listener);
 	int err = EVUTIL_SOCKET_ERROR();
 	//fprintf(stderr, "Got an error %d (%s) on the listener. "
-	//	"Shutting down.\n", err, evutil_socket_error_to_string(err));
+	//	"Shutting down.", err, evutil_socket_error_to_string(err));
 	event_base_loopexit(base, NULL);
 }
 
 void NetworkManager::OnBuffereventArrive(struct bufferevent* bev, short event, void* ctx) {
 	if (event & BEV_EVENT_ERROR) {
-		LOGERROR("[NetworkManager::OnBuffereventArrive] error from bufferevent!\n");
+		LOGERROR("[NetworkManager::OnBuffereventArrive] error from bufferevent!");
 	}
 
 	if (event & (BEV_EVENT_EOF | BEV_EVENT_ERROR)) {
@@ -117,7 +117,7 @@ void NetworkManager::OnBuffereventArrive(struct bufferevent* bev, short event, v
 	}
 
 	if (event & BEV_EVENT_CONNECTED) {
-		LOGGREEN("[NetworkManager::OnBuffereventArrive] client connected\n");
+		LOGGREEN("[NetworkManager::OnBuffereventArrive] client connected");
 		//write_cb(bev, NULL);
 		//char msg[] = "client connected";
 		//bufferevent_write(bev, msg, sizeof(msg));
@@ -140,7 +140,7 @@ void NetworkManager::OnBuffereventRead(struct bufferevent* bev, void* ctx) {
 		size_t n = evbuffer_get_length(input);
 		//if (evbuffer_remove(input, buf, n) > 0 ) { // read and remove
 		if (evbuffer_copyout(input, buf, n) > 0 ) {  // read only
-			printf("read data from client : %s\n", buf);
+			printf("read data from client : %s", buf);
 			//evbuffer_add_printf(output, "client msg %d", my_n);
 		}
 	//}

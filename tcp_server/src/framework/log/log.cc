@@ -28,8 +28,7 @@ void log::printfgreen(const char* format, ...) {
 #ifdef _WIN32
 	auto h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, FOREGROUND_INTENSITY | (int)log::Colors::COLOR_GREEN);
-	//std::cout << buf << std::endl;
-	std::cout << buf;
+	std::cout << buf << std::endl;
 	SetConsoleTextAttribute(h, FOREGROUND_INTENSITY | (int)log::Colors::COLOR_WHITE);
 #else
 	// TODO : other platform
@@ -45,8 +44,7 @@ void log::printferr(const char* format, ...) {
 #ifdef _WIN32
 	auto h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, FOREGROUND_INTENSITY | (int)log::Colors::COLOR_RED);
-	//std::cout << buf << std::endl;
-	std::cout << buf;
+	std::cout << buf << std::endl;
 	SetConsoleTextAttribute(h, FOREGROUND_INTENSITY | (int)log::Colors::COLOR_WHITE);
 #else
 	// TODO : other platform
@@ -62,8 +60,7 @@ void log::printfc(Colors c, const char* format, ...) {
 #ifdef _WIN32
 	auto h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, FOREGROUND_INTENSITY | (int)c);
-	//std::cout << buf << std::endl;
-	std::cout << buf;
+	std::cout << buf << std::endl;
 	SetConsoleTextAttribute(h, FOREGROUND_INTENSITY | (int)Colors::COLOR_WHITE);
 #else
 	// TODO : other platform

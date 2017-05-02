@@ -31,7 +31,7 @@ class NetworkManager {
 
 	NetworkManager(const NetworkManager&) = delete;
 
-	~NetworkManager() {};
+	void *operator new(std::size_t) = delete;
 
 	static NetworkManager* instance();
 
