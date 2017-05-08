@@ -12,8 +12,8 @@
  modification:
  ********************************************************************************/
 
-#ifndef CONNOR_GAME_SRC_FRAMEWORK_COMMON_H_
-#define CONNOR_GAME_SRC_FRAMEWORK_COMMON_H_
+#ifndef CONNOR_GAME_SRC_BASE_COMMON_H_
+#define CONNOR_GAME_SRC_BASE_COMMON_H_
 
 #include "macros.h"
 
@@ -35,6 +35,13 @@ struct delete_map_obj {
     }
 };
 
+template <typename T1, typename T2>
+void swap(T1& t1, T2& t2) {
+	auto tmp = t1;
+	t1 = t2;
+	t2 = tmp;
+};
+
 } // namespace gamer
 
-#endif // CONNOR_GAME_SRC_FRAMEWORK_COMMON_H_
+#endif // CONNOR_GAME_SRC_BASE_COMMON_H_

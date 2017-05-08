@@ -4,7 +4,7 @@
  @ author:		  Connor
  @ version:	      1.0.0
  @ date:		  2014-09-12
- @ description:   define common macros.
+ @ description:   define common base macros.
  @ others:
  @ history:
  1.date:
@@ -12,8 +12,8 @@
  modification:
  ********************************************************************************/
 
-#ifndef CONNOR_GAME_SRC_MACROS_H_
-#define CONNOR_GAME_SRC_MACROS_H_
+#ifndef CONNOR_GAME_SRC_BASE_MACROS_H_
+#define CONNOR_GAME_SRC_BASE_MACROS_H_
 
 namespace gamer {
 
@@ -40,4 +40,4 @@ namespace gamer {
 
 } // namespace gamer
 
-#endif // CONNOR_GAME_SRC_MACROS_H_
+#endif // CONNOR_GAME_SRC_BASE_MACROS_H_
